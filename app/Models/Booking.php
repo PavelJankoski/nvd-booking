@@ -20,6 +20,8 @@ class Booking extends Model
         return $this->belongsTo(Review::class);
     }
 
+
+
     public function address()
     {
         return $this->belongsTo(Address::class);

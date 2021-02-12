@@ -62,6 +62,7 @@
 <script>
 import {is404, is422} from "../shared/utils/response";
 import validationErrors from "../shared/mixins/validationErrors";
+import {mapState} from "vuex";
 
 export default {
     name: "Review",
@@ -71,7 +72,8 @@ export default {
             review: {
                 id: null,
                 rating: 5,
-                content: null
+                content: null,
+                user_id: null
             },
             existingReview: null,
             loading: true,
@@ -88,6 +90,8 @@ export default {
         submit() {
             this.errors = null;
             this.sending = true;
+            this.review.user_id = this.user.id;
+            debugger;
             axios.post('/api/reviews', this.review).then(res => {
                 this.success = res.status === 201;
             }).catch(err => {
@@ -121,27 +125,11 @@ export default {
         }
         this.loading = false;
 
-        /*axios.get(`/api/reviews/${this.review.id}`)
-            .then(response => {
-                this.existingReview = response.data.data;
-            })
-            .catch(err => {
-                if (is404(err)) {
-                    return axios.get(`/api/booking-by-review/${this.$route.params.id}`)
-                        .then(response => {
-                            this.booking = response.data.data;
-                        }).catch((err) => {
-                                this.error = !is404(err);
-                            }
-                        );
-                }
-                this.error = true;
-            })
-            .then(() => {
-                this.loading = false;
-            });*/
     },
     computed: {
+        ...mapState({
+            user: 'user'
+        }),
         alreadyReviewed() {
             return this.hasReview || !this.booking;
         },

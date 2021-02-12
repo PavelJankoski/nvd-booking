@@ -3,7 +3,7 @@
         <nav class="navbar navbar-expand-lg bg-white border-bottom navbar-light">
             <router-link class="navbar-brand mr-auto" :to="{name: 'home'}">NVD-Booking</router-link>
             <ul class="navbar-nav">
-                <li class="nav-item">
+                <li class="nav-item" v-if="isLoggedIn">
                     <router-link class="nav-link" :to="{name: 'basket'}">
                         Basket
                         <span v-if="itemsInBasket" class="badge badge-secondary">{{itemsInBasket}}</span>
@@ -48,6 +48,7 @@ export default {
             try {
                 await axios.post('/logout');
                 await this.$store.dispatch('logOut');
+                await this.$router.push({name: 'home'})
             } catch(error) {
                 await this.$store.dispatch('logOut');
             }

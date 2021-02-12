@@ -4,7 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="98bb9d23-6573-4172-bb7c-e8541375fe8d" name="Default Changelist" comment="" />
+    <list default="true" id="98bb9d23-6573-4172-bb7c-e8541375fe8d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/ReviewController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/ReviewController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/BookableReviewIndexResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/BookableReviewIndexResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Booking.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Booking.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Review.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Review.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_24_200524_create_reviews_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_24_200524_create_reviews_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/bookable/Availability.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bookable/Availability.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/bookable/ReviewList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bookable/ReviewList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/review/Review.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/review/Review.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/routes.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -156,7 +170,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -234,6 +248,8 @@
       <workItem from="1612919201765" duration="307000" />
       <workItem from="1612919608819" duration="30000" />
       <workItem from="1612919676340" duration="705000" />
+      <workItem from="1613087767437" duration="2957000" />
+      <workItem from="1613096097498" duration="6805000" />
     </task>
     <servers />
   </component>

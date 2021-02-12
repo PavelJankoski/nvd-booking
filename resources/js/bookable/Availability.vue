@@ -45,6 +45,7 @@
 <script>
 import {is422} from '../shared/utils/response';
 import validationErrors from "../shared/mixins/validationErrors";
+import {mapState} from "vuex";
 export default {
     name: "Availability",
     mixins: [validationErrors],
@@ -61,28 +62,35 @@ export default {
     },
     methods: {
         async check() {
-            this.loading = true;
-            this.errors = null;
+            if(this.isLoggedIn) {
+                this.loading = true;
+                this.errors = null;
 
-            this.$store.dispatch('setLastSearch', {
-                from: this.from,
-                to: this.to
-            });
-            try{
-                this.status = (await axios.get(`/api/bookables/${this.bookableId}/availability?from=${this.from}&to=${this.to}`)).status;
-                this.$emit('availability', this.hasAvailability);
-            }catch (err) {
-                if(is422(err)){
-                    this.errors = err.response.data.errors;
+                this.$store.dispatch('setLastSearch', {
+                    from: this.from,
+                    to: this.to
+                });
+                try {
+                    this.status = (await axios.get(`/api/bookables/${this.bookableId}/availability?from=${this.from}&to=${this.to}`)).status;
+                    this.$emit('availability', this.hasAvailability);
+                } catch (err) {
+                    if (is422(err)) {
+                        this.errors = err.response.data.errors;
+                    }
+                    this.status = err.response.status;
+                    this.$emit('availability', this.hasAvailability);
                 }
-                this.status = err.response.status;
-                this.$emit('availability', this.hasAvailability);
+                this.loading = false;
             }
-            this.loading = false;
-
+            else {
+                this.$router.push('/auth/login');
+            }
         }
     },
     computed: {
+        ...mapState({
+            isLoggedIn: 'isLoggedIn'
+        }),
         hasErrors(){
             return 422 === this.status && this.errors !== null
         },

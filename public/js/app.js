@@ -1994,21 +1994,27 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 return _this.$store.dispatch('logOut');
 
               case 5:
-                _context.next = 11;
-                break;
+                _context.next = 7;
+                return _this.$router.push({
+                  name: 'home'
+                });
 
               case 7:
-                _context.prev = 7;
+                _context.next = 13;
+                break;
+
+              case 9:
+                _context.prev = 9;
                 _context.t0 = _context["catch"](0);
-                _context.next = 11;
+                _context.next = 13;
                 return _this.$store.dispatch('logOut');
 
-              case 11:
+              case 13:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 7]]);
+        }, _callee, null, [[0, 9]]);
       }))();
     }
   }
@@ -2599,7 +2605,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _shared_utils_response__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../shared/utils/response */ "./resources/js/shared/utils/response.js");
 /* harmony import */ var _shared_mixins_validationErrors__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../shared/mixins/validationErrors */ "./resources/js/shared/mixins/validationErrors.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
@@ -2651,6 +2664,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Availability",
   mixins: [_shared_mixins_validationErrors__WEBPACK_IMPORTED_MODULE_2__["default"]],
@@ -2674,6 +2688,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
+                if (!_this.isLoggedIn) {
+                  _context.next = 19;
+                  break;
+                }
+
                 _this.loading = true;
                 _this.errors = null;
 
@@ -2682,21 +2701,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   to: _this.to
                 });
 
-                _context.prev = 3;
-                _context.next = 6;
+                _context.prev = 4;
+                _context.next = 7;
                 return axios.get("/api/bookables/".concat(_this.bookableId, "/availability?from=").concat(_this.from, "&to=").concat(_this.to));
 
-              case 6:
+              case 7:
                 _this.status = _context.sent.status;
 
                 _this.$emit('availability', _this.hasAvailability);
 
-                _context.next = 15;
+                _context.next = 16;
                 break;
 
-              case 10:
-                _context.prev = 10;
-                _context.t0 = _context["catch"](3);
+              case 11:
+                _context.prev = 11;
+                _context.t0 = _context["catch"](4);
 
                 if (Object(_shared_utils_response__WEBPACK_IMPORTED_MODULE_1__["is422"])(_context.t0)) {
                   _this.errors = _context.t0.response.data.errors;
@@ -2706,19 +2725,26 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 _this.$emit('availability', _this.hasAvailability);
 
-              case 15:
-                _this.loading = false;
-
               case 16:
+                _this.loading = false;
+                _context.next = 20;
+                break;
+
+              case 19:
+                _this.$router.push('/auth/login');
+
+              case 20:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[3, 10]]);
+        }, _callee, null, [[4, 11]]);
       }))();
     }
   },
-  computed: {
+  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapState"])({
+    isLoggedIn: 'isLoggedIn'
+  })), {}, {
     hasErrors: function hasErrors() {
       return 422 === this.status && this.errors !== null;
     },
@@ -2728,7 +2754,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     noAvailability: function noAvailability() {
       return 404 === this.status;
     }
-  }
+  })
 });
 
 /***/ }),
@@ -3125,7 +3151,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _shared_utils_response__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../shared/utils/response */ "./resources/js/shared/utils/response.js");
 /* harmony import */ var _shared_mixins_validationErrors__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../shared/mixins/validationErrors */ "./resources/js/shared/mixins/validationErrors.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
@@ -3194,6 +3227,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Review",
   mixins: [_shared_mixins_validationErrors__WEBPACK_IMPORTED_MODULE_2__["default"]],
@@ -3202,7 +3236,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       review: {
         id: null,
         rating: 5,
-        content: null
+        content: null,
+        user_id: null
       },
       existingReview: null,
       loading: true,
@@ -3221,6 +3256,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       this.errors = null;
       this.sending = true;
+      this.review.user_id = this.user.id;
+      debugger;
       axios.post('/api/reviews', this.review).then(function (res) {
         _this.success = res.status === 201;
       })["catch"](function (err) {
@@ -3289,25 +3326,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
             case 22:
               _this2.loading = false;
-              /*axios.get(`/api/reviews/${this.review.id}`)
-                  .then(response => {
-                      this.existingReview = response.data.data;
-                  })
-                  .catch(err => {
-                      if (is404(err)) {
-                          return axios.get(`/api/booking-by-review/${this.$route.params.id}`)
-                              .then(response => {
-                                  this.booking = response.data.data;
-                              }).catch((err) => {
-                                      this.error = !is404(err);
-                                  }
-                              );
-                      }
-                      this.error = true;
-                  })
-                  .then(() => {
-                      this.loading = false;
-                  });*/
 
             case 23:
             case "end":
@@ -3317,7 +3335,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }, _callee, null, [[1, 7], [10, 16]]);
     }))();
   },
-  computed: {
+  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapState"])({
+    user: 'user'
+  })), {}, {
     alreadyReviewed: function alreadyReviewed() {
       return this.hasReview || !this.booking;
     },
@@ -3333,7 +3353,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     twoColumns: function twoColumns() {
       return !this.alreadyReviewed;
     }
-  }
+  })
 });
 
 /***/ }),
@@ -67525,25 +67545,32 @@ var render = function() {
         ),
         _vm._v(" "),
         _c("ul", { staticClass: "navbar-nav" }, [
-          _c(
-            "li",
-            { staticClass: "nav-item" },
-            [
-              _c(
-                "router-link",
-                { staticClass: "nav-link", attrs: { to: { name: "basket" } } },
+          _vm.isLoggedIn
+            ? _c(
+                "li",
+                { staticClass: "nav-item" },
                 [
-                  _vm._v("\n                    Basket\n                    "),
-                  _vm.itemsInBasket
-                    ? _c("span", { staticClass: "badge badge-secondary" }, [
-                        _vm._v(_vm._s(_vm.itemsInBasket))
-                      ])
-                    : _vm._e()
-                ]
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "nav-link",
+                      attrs: { to: { name: "basket" } }
+                    },
+                    [
+                      _vm._v(
+                        "\n                    Basket\n                    "
+                      ),
+                      _vm.itemsInBasket
+                        ? _c("span", { staticClass: "badge badge-secondary" }, [
+                            _vm._v(_vm._s(_vm.itemsInBasket))
+                          ])
+                        : _vm._e()
+                    ]
+                  )
+                ],
+                1
               )
-            ],
-            1
-          ),
+            : _vm._e(),
           _vm._v(" "),
           !_vm.isLoggedIn
             ? _c(
@@ -68937,7 +68964,9 @@ var render = function() {
                   _c("div", { staticClass: "row pt-4" }, [
                     _c("div", { staticClass: "col-md-6" }, [
                       _vm._v(
-                        "\n                    Pavel Jankoski\n                "
+                        "\n                    " +
+                          _vm._s(review.name) +
+                          "\n                "
                       )
                     ]),
                     _vm._v(" "),
@@ -86993,6 +87022,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _basket_Basket__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./basket/Basket */ "./resources/js/basket/Basket.vue");
 /* harmony import */ var _auth_Login__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./auth/Login */ "./resources/js/auth/Login.vue");
 /* harmony import */ var _auth_Register__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./auth/Register */ "./resources/js/auth/Register.vue");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./store */ "./resources/js/store.js");
+
 
 
 
@@ -87015,7 +87046,10 @@ var routes = [{
 }, {
   path: "/basket",
   component: _basket_Basket__WEBPACK_IMPORTED_MODULE_4__["default"],
-  name: "basket"
+  name: "basket",
+  meta: {
+    requiresAuth: true
+  }
 }, {
   path: "/auth/login",
   component: _auth_Login__WEBPACK_IMPORTED_MODULE_5__["default"],
@@ -87028,6 +87062,21 @@ var routes = [{
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
   routes: routes,
   mode: "history"
+});
+router.beforeEach(function (to, from, next) {
+  if (to.matched.some(function (route) {
+    return route.meta.requiresAuth;
+  })) {
+    if (_store__WEBPACK_IMPORTED_MODULE_7__["default"].state.user.id) {
+      next();
+    } else {
+      next({
+        path: '/auth/login'
+      });
+    }
+  }
+
+  next();
 });
 /* harmony default export */ __webpack_exports__["default"] = (router);
 

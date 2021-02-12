@@ -9,7 +9,7 @@ class Review extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id', 'content', 'rating'];
+    protected $fillable = ['id', 'content', 'rating', 'user_id'];
 
     public function bookable(){
         return $this->belongsTo(Bookable::class);
@@ -17,6 +17,10 @@ class Review extends Model
 
     public function booking(){
         return $this->belongsTo(Booking::class);
+    }
+
+    public function user() {
+        return $this->belongsTo(User::class);
     }
 
     public function getIncrementing()

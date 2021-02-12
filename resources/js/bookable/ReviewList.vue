@@ -5,7 +5,7 @@
             <div class="border-bottom d-none d-md-block" v-for="(review, idx) in reviews" :key="idx">
                 <div class="row pt-4">
                     <div class="col-md-6">
-                        Pavel Jankoski
+                        {{review.name}}
                     </div>
                     <div class="col-md-6 d-flex justify-content-end">
                             <star-rating :value="review.rating" class="fa-lg"></star-rating>

@@ -72,11 +72,17 @@ export default {
             }
         },
         addToBasket() {
-            this.$store.dispatch("addToBasket", {
-                bookable: this.bookable,
-                price: this.price,
-                dates: this.lastSearch
-            })
+            if(this.isLoggedIn){
+                this.$store.dispatch("addToBasket", {
+                    bookable: this.bookable,
+                    price: this.price,
+                    dates: this.lastSearch
+                })
+            }
+            else {
+                this.$router.push({name: 'login'});
+            }
+
         },
         removeFromBasket() {
             this.$store.dispatch('removeFromBasket', this.bookable.id);
@@ -94,7 +100,8 @@ export default {
     },
     computed: {
         ...mapState({
-            lastSearch: 'lastSearch'
+            lastSearch: 'lastSearch',
+            isLoggedIn: 'isLoggedIn'
         }),
         inBasketAlready() {
             if (null === this.bookable) {

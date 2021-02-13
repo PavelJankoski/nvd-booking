@@ -2692,11 +2692,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                if (!_this.isLoggedIn) {
-                  _context.next = 19;
-                  break;
-                }
-
                 _this.loading = true;
                 _this.errors = null;
 
@@ -2705,21 +2700,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   to: _this.to
                 });
 
-                _context.prev = 4;
-                _context.next = 7;
+                _context.prev = 3;
+                _context.next = 6;
                 return axios.get("/api/bookables/".concat(_this.bookableId, "/availability?from=").concat(_this.from, "&to=").concat(_this.to));
 
-              case 7:
+              case 6:
                 _this.status = _context.sent.status;
 
                 _this.$emit('availability', _this.hasAvailability);
 
-                _context.next = 16;
+                _context.next = 15;
                 break;
 
-              case 11:
-                _context.prev = 11;
-                _context.t0 = _context["catch"](4);
+              case 10:
+                _context.prev = 10;
+                _context.t0 = _context["catch"](3);
 
                 if (Object(_shared_utils_response__WEBPACK_IMPORTED_MODULE_1__["is422"])(_context.t0)) {
                   _this.errors = _context.t0.response.data.errors;
@@ -2729,20 +2724,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 _this.$emit('availability', _this.hasAvailability);
 
-              case 16:
+              case 15:
                 _this.loading = false;
-                _context.next = 20;
-                break;
 
-              case 19:
-                _this.$router.push('/auth/login');
-
-              case 20:
+              case 16:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[4, 11]]);
+        }, _callee, null, [[3, 10]]);
       }))();
     }
   },
@@ -2891,11 +2881,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }))();
     },
     addToBasket: function addToBasket() {
-      this.$store.dispatch("addToBasket", {
-        bookable: this.bookable,
-        price: this.price,
-        dates: this.lastSearch
-      });
+      if (this.isLoggedIn) {
+        this.$store.dispatch("addToBasket", {
+          bookable: this.bookable,
+          price: this.price,
+          dates: this.lastSearch
+        });
+      } else {
+        this.$router.push({
+          name: 'login'
+        });
+      }
     },
     removeFromBasket: function removeFromBasket() {
       this.$store.dispatch('removeFromBasket', this.bookable.id);
@@ -2914,7 +2910,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     });
   },
   computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_4__["mapState"])({
-    lastSearch: 'lastSearch'
+    lastSearch: 'lastSearch',
+    isLoggedIn: 'isLoggedIn'
   })), {}, {
     inBasketAlready: function inBasketAlready() {
       if (null === this.bookable) {
@@ -3061,6 +3058,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "BookableListItem",
   props: {
@@ -3074,6 +3073,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     id: {
       type: Number,
+      required: true
+    },
+    price: {
       required: true
     }
   }
@@ -69041,30 +69043,32 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "card w-100" }, [
-    _c(
-      "div",
-      { staticClass: "card-body" },
-      [
-        _c(
-          "router-link",
-          { attrs: { to: { name: "bookable", params: { id: _vm.id } } } },
-          [
-            _c("h5", { staticClass: "card-title" }, [
-              _vm._v(
-                "\n                " + _vm._s(_vm.title) + "\n            "
-              )
-            ])
-          ]
-        ),
-        _vm._v(" "),
+  return _c(
+    "div",
+    { staticClass: "card w-100" },
+    [
+      _c(
+        "router-link",
+        { attrs: { to: { name: "bookable", params: { id: _vm.id } } } },
+        [
+          _c("h5", { staticClass: "card-header" }, [
+            _vm._v("\n            " + _vm._s(_vm.title) + "\n        ")
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-body" }, [
         _c("p", { staticClass: "card-text" }, [
           _vm._v("\n            " + _vm._s(_vm.description) + "\n        ")
         ])
-      ],
-      1
-    )
-  ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-footer text-right text-muted" }, [
+        _vm._v("\n        Price per night: $" + _vm._s(_vm.price) + "\n    ")
+      ])
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -69107,6 +69111,7 @@ var render = function() {
                   attrs: {
                     title: bookable.title,
                     description: bookable.description,
+                    price: bookable.price,
                     id: bookable.id
                   }
                 })

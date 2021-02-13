@@ -5,15 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="98bb9d23-6573-4172-bb7c-e8541375fe8d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d2a6f413-5178-4dfd-96ad-6edc365feb13.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d2a6f413-5178-4dfd-96ad-6edc365feb13.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/CheckoutController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/CheckoutController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Booking.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Booking.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_21_202112_create_bookings_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_21_202112_create_bookings_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/BookableIndexResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/BookableIndexResource.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/basket/Basket.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/basket/Basket.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/review/Review.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/review/Review.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/bookable/Availability.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bookable/Availability.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/bookable/Bookable.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bookable/Bookable.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/bookables/BookableListItem.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bookables/BookableListItem.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/bookables/Bookables.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bookables/Bookables.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -247,7 +246,7 @@
       <workItem from="1613087767437" duration="2957000" />
       <workItem from="1613096097498" duration="6895000" />
       <workItem from="1613167638417" duration="848000" />
-      <workItem from="1613174089435" duration="1136000" />
+      <workItem from="1613174089435" duration="5005000" />
     </task>
     <servers />
   </component>

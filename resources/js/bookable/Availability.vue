@@ -62,7 +62,7 @@ export default {
     },
     methods: {
         async check() {
-            if(this.isLoggedIn) {
+
                 this.loading = true;
                 this.errors = null;
 
@@ -81,10 +81,7 @@ export default {
                     this.$emit('availability', this.hasAvailability);
                 }
                 this.loading = false;
-            }
-            else {
-                this.$router.push('/auth/login');
-            }
+
         }
     },
     computed: {

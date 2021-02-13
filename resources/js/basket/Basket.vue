@@ -172,7 +172,8 @@ export default {
     computed: {
         ...mapGetters(["itemsInBasket"]),
         ...mapState({
-            basket: state => state.basket.items
+            basket: state => state.basket.items,
+            user: state => state.user
         }),
         success() {
             return !this.loading && this.itemsInBasket === 0 && this.bookingAttempted
@@ -189,7 +190,8 @@ export default {
                     bookings: this.basket.map(basketItem => ({
                         bookable_id: basketItem.bookable.id,
                         from: basketItem.dates.from,
-                        to: basketItem.dates.to
+                        to: basketItem.dates.to,
+                        user_id: this.user.id
                     }))
                 });
                 await this.$store.dispatch('clearBasket')

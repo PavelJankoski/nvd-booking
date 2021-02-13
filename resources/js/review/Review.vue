@@ -91,7 +91,6 @@ export default {
             this.errors = null;
             this.sending = true;
             this.review.user_id = this.user.id;
-            debugger;
             axios.post('/api/reviews', this.review).then(res => {
                 this.success = res.status === 201;
             }).catch(err => {
@@ -115,6 +114,7 @@ export default {
         } catch (err) {
             if (is404(err)) {
                 try {
+                    await axios.get("/sanctum/csrf-cookie");
                     this.booking = (await axios.get(`/api/booking-by-review/${this.$route.params.id}`)).data.data;
                 } catch (err2) {
                     this.error = !is404(err2);

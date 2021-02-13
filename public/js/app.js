@@ -2531,6 +2531,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   computed: _objectSpread(_objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])(["itemsInBasket"])), Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapState"])({
     basket: function basket(state) {
       return state.basket.items;
+    },
+    user: function user(state) {
+      return state.user;
     }
   })), {}, {
     success: function success() {
@@ -2557,7 +2560,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                     return {
                       bookable_id: basketItem.bookable.id,
                       from: basketItem.dates.from,
-                      to: basketItem.dates.to
+                      to: basketItem.dates.to,
+                      user_id: _this.user.id
                     };
                   })
                 });
@@ -3257,7 +3261,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.errors = null;
       this.sending = true;
       this.review.user_id = this.user.id;
-      debugger;
       axios.post('/api/reviews', this.review).then(function (res) {
         _this.success = res.status === 201;
       })["catch"](function (err) {
@@ -3291,7 +3294,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
             case 4:
               _this2.existingReview = _context.sent.data.data;
-              _context.next = 22;
+              _context.next = 24;
               break;
 
             case 7:
@@ -3299,40 +3302,44 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               _context.t0 = _context["catch"](1);
 
               if (!Object(_shared_utils_response__WEBPACK_IMPORTED_MODULE_1__["is404"])(_context.t0)) {
-                _context.next = 21;
+                _context.next = 23;
                 break;
               }
 
               _context.prev = 10;
               _context.next = 13;
-              return axios.get("/api/booking-by-review/".concat(_this2.$route.params.id));
+              return axios.get("/sanctum/csrf-cookie");
 
             case 13:
+              _context.next = 15;
+              return axios.get("/api/booking-by-review/".concat(_this2.$route.params.id));
+
+            case 15:
               _this2.booking = _context.sent.data.data;
-              _context.next = 19;
+              _context.next = 21;
               break;
 
-            case 16:
-              _context.prev = 16;
+            case 18:
+              _context.prev = 18;
               _context.t1 = _context["catch"](10);
               _this2.error = !Object(_shared_utils_response__WEBPACK_IMPORTED_MODULE_1__["is404"])(_context.t1);
 
-            case 19:
-              _context.next = 22;
+            case 21:
+              _context.next = 24;
               break;
 
-            case 21:
+            case 23:
               _this2.error = true;
 
-            case 22:
+            case 24:
               _this2.loading = false;
 
-            case 23:
+            case 25:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[1, 7], [10, 16]]);
+      }, _callee, null, [[1, 7], [10, 18]]);
     }))();
   },
   computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapState"])({

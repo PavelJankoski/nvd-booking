@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Address;
 use App\Models\Bookable;
 use App\Models\Booking;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
@@ -21,6 +22,7 @@ class CheckoutController extends Controller
         $data = $request->validate([
             'bookings' => 'required|array|min:1',
             'bookings.*.bookable_id' => 'required|exists:bookables,id',
+            'bookings.*.user_id' => 'required',
             'bookings.*.from' => 'required|date|after_or_equal:today',
             'bookings.*.to' => 'required|date|after_or_equal:bookings.*.from',
             'customer.first_name' => 'required|min:2',
@@ -47,9 +49,11 @@ class CheckoutController extends Controller
 
         $bookings = collect($bookingsData)->map(function ($bookingData) use ($addressData) {
             $bookable = Bookable::findOrFail($bookingData['bookable_id']);
+            $user = User::findOrFail($bookingData['user_id']);
             $booking = new Booking();
             $booking->from = $bookingData['from'];
             $booking->to = $bookingData['to'];
+            $booking->user_id = $user->id;
             $total = (array) $bookable->priceFor($booking->from, $booking->to);
             $booking->price = $total['original']['data']['total'];
             $booking->bookable()->associate($bookable);

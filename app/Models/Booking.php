@@ -10,7 +10,7 @@ use Illuminate\Support\Str;
 class Booking extends Model
 {
     use HasFactory;
-    protected $fillable = ['from', 'to'];
+    protected $fillable = ['from', 'to', 'user_id'];
 
     public function bookable(){
         return $this->belongsTo(Bookable::class);
@@ -20,7 +20,9 @@ class Booking extends Model
         return $this->belongsTo(Review::class);
     }
 
-
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 
     public function address()
     {

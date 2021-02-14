@@ -1,8 +1,8 @@
 <template>
     <div id="stars" class="d-flex">
         <i class="fas fa-star" v-for="star in fullStars" :key="'full' + star" @click="$emit('input', star)"></i>
-        <i class="fas fa-star-half-alt" v-if="halfStar"></i>
-        <i class="far fa-star" v-for="star in emptyStars" :key="'empty' + star" @click="$emit('input', fullStars+star)"></i>
+        <i class="fas fa-star-half-alt text-warning" v-if="halfStar"></i>
+        <i class="far fa-star text-warning" v-for="star in emptyStars" :key="'empty' + star" @click="$emit('input', fullStars+star)"></i>
 
     </div>
 
@@ -35,5 +35,7 @@ export default {
 </script>
 
 <style scoped>
-
+i {
+    color: #f7c000;
+}
 </style>

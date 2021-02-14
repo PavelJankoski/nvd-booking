@@ -5,14 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="98bb9d23-6573-4172-bb7c-e8541375fe8d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d2a6f413-5178-4dfd-96ad-6edc365feb13.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d2a6f413-5178-4dfd-96ad-6edc365feb13.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/BookableIndexResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/BookableIndexResource.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/bookable/Availability.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bookable/Availability.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/bookable/Bookable.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bookable/Bookable.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/bookables/BookableListItem.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bookables/BookableListItem.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/bookables/Bookables.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bookables/Bookables.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/shared/components/StarRating.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/shared/components/StarRating.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -246,7 +243,9 @@
       <workItem from="1613087767437" duration="2957000" />
       <workItem from="1613096097498" duration="6895000" />
       <workItem from="1613167638417" duration="848000" />
-      <workItem from="1613174089435" duration="5005000" />
+      <workItem from="1613174089435" duration="6834000" />
+      <workItem from="1613185698288" duration="30000" />
+      <workItem from="1613273368118" duration="5337000" />
     </task>
     <servers />
   </component>
